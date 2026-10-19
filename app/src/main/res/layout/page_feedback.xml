@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView style="@style/SecTitle" android:text="反馈 / 申诉" />
+
+        <LinearLayout
+            android:id="@+id/fbLock"
+            style="@style/Card"
+            android:visibility="gone">
+            <TextView
+                style="@style/Body"
+                android:text="🔒 当前为游客模式，只能浏览首页 / 监控 / 更多。登录后才能提交反馈与申诉。" />
+            <Button
+                android:id="@+id/fbLogin"
+                style="@style/Btn"
+                android:layout_marginTop="12dp"
+                android:text="立即登录" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fbBody"
+            style="@style/Card"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Body"
+                android:text="类型"
+                android:textColor="#FFEAF6EF" />
+
+            <Spinner
+                android:id="@+id/fbType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/input_bg"
+                android:padding="8dp" />
+
+            <EditText
+                android:id="@+id/fbContent"
+                style="@style/Input"
+                android:gravity="top"
+                android:hint="请详细描述你遇到的问题…"
+                android:minLines="5" />
+
+            <Button
+                android:id="@+id/fbSubmit"
+                style="@style/Btn"
+                android:text="提交反馈" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/SecTitle"
+            android:layout_marginTop="10dp"
+            android:text="我的反馈" />
+
+        <LinearLayout
+            android:id="@+id/fbMine"
+            style="@style/Card"
+            android:minHeight="60dp" />
+
+    </LinearLayout>
+</ScrollView>

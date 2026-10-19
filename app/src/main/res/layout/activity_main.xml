@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 装饰层：漂浮物 + 反重力粒子环，在正文之下 -->
+    <xfan.mc.app.DecorView
+        android:id="@+id/decorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 主内容 -->
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 顶部栏目：首页/监控/反馈/更多 + 账号位；切到「我的」时整条隐藏 -->
+        <HorizontalScrollView
+            android:id="@+id/topTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView android:id="@+id/tabHome" style="@style/Tab" android:text="首页" />
+                <TextView android:id="@+id/tabMonitor" style="@style/Tab" android:text="监控" />
+                <TextView android:id="@+id/tabFeedback" style="@style/Tab" android:text="反馈" />
+                <TextView android:id="@+id/tabMore" style="@style/Tab" android:text="更多" />
+                <TextView
+                    android:id="@+id/tabMe"
+                    style="@style/Tab"
+                    android:layout_marginStart="6dp"
+                    android:text="登录 / 注册" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- 页面容器：只显示一个 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <include android:id="@+id/pageHome" layout="@layout/page_home" />
+            <include android:id="@+id/pageMonitor" layout="@layout/page_monitor" android:visibility="gone" />
+            <include android:id="@+id/pageFeedback" layout="@layout/page_feedback" android:visibility="gone" />
+            <include android:id="@+id/pageMore" layout="@layout/page_more" android:visibility="gone" />
+            <include android:id="@+id/pageMe" layout="@layout/page_me" android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- 底部导航 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:background="#E6142630">
+
+            <TextView
+                android:id="@+id/navHome"
+                style="@style/BottomTab"
+                android:text="首页" />
+
+            <TextView
+                android:id="@+id/navMe"
+                style="@style/BottomTab"
+                android:text="我的" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 加载层：启动时盖住整个页面 -->
+    <include
+        android:id="@+id/loadingLayer"
+        layout="@layout/view_loading" />
+
+    <!-- 切主题过渡层：自上而下扫屏 -->
+    <View
+        android:id="@+id/themeWipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:visibility="gone" />
+
+</FrameLayout>

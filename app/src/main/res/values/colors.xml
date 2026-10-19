@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FF0F2017</color>
+    <color name="bg2">#FF16241F</color>
+    <color name="card">#22FFFFFF</color>
+    <color name="card_border">#33FFFFFF</color>
+    <color name="text">#FFEAF6EF</color>
+    <color name="text_dim">#B3EAF6EF</color>
+    <color name="accent">#FF5FD68F</color>
+    <color name="accent_dark">#FF4BC97A</color>
+    <color name="danger">#FFF87171</color>
+    <color name="warn">#FFFB923C</color>
+    <color name="nav_bg">#F2142630</color>
+</resources>

@@ -1,0 +1,17 @@
+# ⚠️ 签名密钥与含密码的配置文件不要上传到公开仓库
+keystore.jks
+keystore.properties
+*.jks
+*.keystore
+*.pk8
+*.x509.pem
+
+# Gradle / 构建产物
+.gradle/
+build/
+app/build/
+.idea/
+local.properties
+*.iml
+.cxx/
+.externalNativeBuild/

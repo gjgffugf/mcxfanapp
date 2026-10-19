@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 公告弹窗：加载动画结束后才弹 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="公告"
+        android:textColor="#FFEAF6EF"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/noticeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text=""
+        android:textColor="#B3EAF6EF"
+        android:textSize="13.5sp" />
+
+    <Button
+        android:id="@+id/noticeOk"
+        style="@style/Btn"
+        android:layout_marginTop="18dp"
+        android:text="我知道了" />
+
+</LinearLayout>

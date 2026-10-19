@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 登录弹窗：复刻网页版登录框（登录/注册/找回 三 tab + 接口状态） -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView android:id="@+id/lgTabLogin" style="@style/Tab" android:text="登录" />
+            <TextView android:id="@+id/lgTabReg" style="@style/Tab" android:text="注册" />
+            <TextView android:id="@+id/lgTabFind" style="@style/Tab" android:text="找回" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/lgUser"
+            style="@style/Input"
+            android:layout_marginTop="8dp"
+            android:hint="用户名"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/lgPwd"
+            style="@style/Input"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/lgEmail"
+            style="@style/Input"
+            android:hint="邮箱（可选，之后也能绑定）"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/lgGo"
+            style="@style/Btn"
+            android:text="登录" />
+
+        <Button
+            android:id="@+id/lgGuest"
+            style="@style/BtnGray"
+            android:layout_marginTop="8dp"
+            android:text="以游客模式浏览" />
+
+        <TextView
+            android:id="@+id/lgMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#FFF87171"
+            android:textSize="12.5sp" />
+
+        <!-- 接口状态（与网页一致） -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="接口状态"
+            android:textColor="#FFEAF6EF"
+            android:textSize="13.5sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lgApiList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/lgRetest"
+            style="@style/BtnGray"
+            android:layout_marginTop="8dp"
+            android:text="重新测试" />
+
+    </LinearLayout>
+</ScrollView>

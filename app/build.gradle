@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+}
+
+/* ---- 签名配置 ----
+   读 keystore.properties；文件不存在则跳过签名（出未签名包，不会构建失败）。
+   ⚠️ keystore.properties 与 keystore.jks 已在 .gitignore 里，不会被推到公开仓库。 */
+def ksFile = rootProject.file('keystore.properties')
+def ksProps = new Properties()
+if (ksFile.exists()) {
+    ksFile.withInputStream { ksProps.load(it) }
+}
+def hasSign = ksFile.exists() && rootProject.file(ksProps['keystore.file'] ?: '').exists()
+
+android {
+    namespace 'xfan.mc.app'
+    compileSdk 34
+
+    signingConfigs {
+        if (hasSign) {
+            release {
+                storeFile rootProject.file(ksProps['keystore.file'])
+                storePassword ksProps['store.password']
+                keyAlias ksProps['key.alias']
+                keyPassword ksProps['key.password']
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "xfan.mc.app"
+        minSdk 23
+        targetSdk 34
+        /* ⚠️ 后台推送的版本号必须 > 这个数字才会提示更新。
+           发新版时这里 +1，同时去后台 APP 栏目填同样的数字 */
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            /* 有签名配置就用它，没有就出未签名包 */
+            signingConfig hasSign ? signingConfigs.release : null
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /* AGP 8 默认不生成 BuildConfig，需要显式打开。
+       目前代码已改用 PackageManager 读版本号、不依赖它，
+       但开着不影响什么，也方便以后直接用 BuildConfig 做调试开关。 */
+    buildFeatures {
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+/* 无任何第三方依赖：只用 Android 框架自带 API。
+   好处是 GitHub Actions 构建快、不会因为依赖源挂掉而失败。 */
+dependencies {
+}

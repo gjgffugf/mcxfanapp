@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 加载层：复刻网页的加载动画（进度条 + 当前加载项） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loadingRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF0B1512"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/loadTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:text="小帆的服务器"
+        android:textColor="#FFEAF6EF"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <!-- 当前加载项：一次只显示一项 -->
+    <TextView
+        android:id="@+id/loadStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text=""
+        android:textColor="#B3EAF6EF"
+        android:textSize="13.5sp" />
+
+    <!-- 进度条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginBottom="14dp"
+        android:background="#22FFFFFF"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/loadBar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FF5FD68F" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loadPct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textColor="#8AEAF6EF"
+        android:textSize="12sp" />
+
+</LinearLayout>

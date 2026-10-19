@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView style="@style/SecTitle" android:text="站外链接" />
+
+        <LinearLayout style="@style/Card">
+            <Button
+                android:id="@+id/linkFeedback"
+                style="@style/BtnGray"
+                android:layout_marginBottom="10dp"
+                android:text="反馈 / 申诉（网页版）" />
+            <Button
+                android:id="@+id/linkVote"
+                style="@style/BtnGray"
+                android:layout_marginBottom="10dp"
+                android:text="匿名投票" />
+            <Button
+                android:id="@+id/linkApp"
+                style="@style/BtnGray"
+                android:text="App 下载" />
+        </LinearLayout>
+
+        <TextView style="@style/SecTitle" android:text="疑问 / 说明" />
+
+        <LinearLayout
+            android:id="@+id/faqList"
+            style="@style/Card"
+            android:minHeight="60dp" />
+
+    </LinearLayout>
+</ScrollView>
