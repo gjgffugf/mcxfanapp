@@ -166,12 +166,12 @@ public class MainActivity extends android.app.Activity {
 
     private void runLoading() {
         loadingRoot.setVisibility(View.VISIBLE);
-        setProgress(0);
+        setLoadProgress(0);
         loadingDone = false;
 
         // 兜底：公告请求迟迟不回也能进主界面
         main.postDelayed(() -> {
-            if (!loadingDone) { setProgress(100); finishLoading(); }
+            if (!loadingDone) { setLoadProgress(100); finishLoading(); }
         }, BOOT_TIMEOUT);
 
         step(0, "加载背景中", () -> {
@@ -213,7 +213,7 @@ public class MainActivity extends android.app.Activity {
                     noticeText = j.optString("notice", "");
                 }
                 if (loadingDone) return;    // step 的超时保护可能已先收尾
-                setProgress(100);
+                setLoadProgress(100);
                 finishLoading();
             });
         });
@@ -228,7 +228,7 @@ public class MainActivity extends android.app.Activity {
 
         loadStep.setText(label);
         animateStep();
-        setProgress(start);
+        setLoadProgress(start);
 
         final long t0 = System.currentTimeMillis();
         final boolean[] done = {false};
@@ -240,7 +240,7 @@ public class MainActivity extends android.app.Activity {
             long used = System.currentTimeMillis() - t0;
             long wait = Math.max(0, 50 - used);
             main.postDelayed(() -> {
-                setProgress(end);
+                setLoadProgress(end);
                 task.run();
             }, wait);
         };
@@ -255,7 +255,8 @@ public class MainActivity extends android.app.Activity {
         loadStep.startAnimation(aa);
     }
 
-    private void setProgress(int pct) {
+    /** ⚠️ 不能叫 setProgress：Activity 里已有 final 的同名方法，会编译失败 */
+    private void setLoadProgress(int pct) {
         loadPct.setText(pct + "%");
         ViewGroup.LayoutParams lp = loadBar.getLayoutParams();
         View parent = (View) loadBar.getParent();
